@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.backButton {
+  background: transparent;
+  border: none;
+  color: #3182ce;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.backButton:hover {
+  text-decoration: underline;
+}
+
+.card {
+  background: #f8464e;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cardTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #2d3748;
+}
+
+.residents {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.residentButton {
+  background: darkslategray;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  font-weight: 600;
+}
+
+.residentButton:hover {
+  background: #e2e8f0;
+}
