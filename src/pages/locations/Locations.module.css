@@ -1,0 +1,36 @@
+.container {
+  padding: 1rem;
+  background-color: aquamarine;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.backButton {
+  position: absolute;
+  left: 0;
+  padding: 0.5rem 1rem;
+  background: #eee;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #333;
+}
+
+.pageTitle {
+  text-align: center;
+  font-size: 2.2rem; /* más grande */
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: #2d3748;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
