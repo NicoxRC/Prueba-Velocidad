@@ -45,7 +45,11 @@ export default function LocationDetail() {
             (url: string, index: Key | null | undefined) => {
               const num = url.split('/').pop();
               return (
-                <button key={index} className={styles.residentButton}>
+                <button
+                  key={index}
+                  className={styles.residentButton}
+                  onClick={() => navigate(`/characters/${num}`)}
+                >
                   {num}
                 </button>
               );

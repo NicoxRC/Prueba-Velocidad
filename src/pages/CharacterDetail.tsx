@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // src/pages/CharacterDetail.tsx
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -33,16 +34,19 @@ const CharacterDetail: React.FC = () => {
 
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
-      case 'alive': return '#4caf50';
-      case 'dead': return '#f44336';
-      default: return '#9e9e9e';
+      case 'alive':
+        return '#4caf50';
+      case 'dead':
+        return '#f44336';
+      default:
+        return '#9e9e9e';
     }
   };
 
   const handleLocationClick = (locationUrl: string) => {
     const locationId = rickMortyAPI.extractIdFromUrl(locationUrl);
     if (locationId) {
-      alert(`🚧 Navegación a Location ID: ${locationId} será implementado proximamente`);
+      navigate(`/locations/${locationId}`);
     }
   };
 
@@ -50,7 +54,7 @@ const CharacterDetail: React.FC = () => {
     return new Date(dateString).toLocaleDateString('es-ES', {
       year: 'numeric',
       month: 'long',
-      day: 'numeric'
+      day: 'numeric',
     });
   };
 
@@ -79,7 +83,7 @@ const CharacterDetail: React.FC = () => {
           <button className="back-btn" onClick={() => navigate('/characters')}>
             ← Volver a Characters
           </button>
-          
+
           <button className="home-btn" onClick={() => navigate('/')}>
             🏠 Dashboard
           </button>
@@ -88,12 +92,12 @@ const CharacterDetail: React.FC = () => {
         <div className="character-hero">
           <div className="character-image-section">
             <div className="image-container">
-              <img 
-                src={character.image} 
+              <img
+                src={character.image}
                 alt={character.name}
                 className="character-image"
               />
-              <div 
+              <div
                 className="status-badge"
                 style={{ backgroundColor: getStatusColor(character.status) }}
               >
@@ -105,18 +109,18 @@ const CharacterDetail: React.FC = () => {
 
           <div className="character-info-section">
             <h1 className="character-name">{character.name}</h1>
-            
+
             <div className="character-basic-info">
               <div className="info-chip species">
                 <span className="chip-icon">🧬</span>
                 {character.species}
               </div>
-              
+
               <div className="info-chip gender">
                 <span className="chip-icon">⚧️</span>
                 {character.gender}
               </div>
-              
+
               {character.type && (
                 <div className="info-chip type">
                   <span className="chip-icon">🏷️</span>
@@ -129,10 +133,9 @@ const CharacterDetail: React.FC = () => {
 
         <div className="character-details">
           <div className="details-grid">
-            
             <div className="detail-card location-card">
               <h3>📍 Ubicación Actual</h3>
-              <div 
+              <div
                 className="location-item clickable"
                 onClick={() => handleLocationClick(character.location.url)}
               >
@@ -143,7 +146,7 @@ const CharacterDetail: React.FC = () => {
 
             <div className="detail-card origin-card">
               <h3>🏠 Origen</h3>
-              <div 
+              <div
                 className="location-item clickable"
                 onClick={() => handleLocationClick(character.origin.url)}
               >
@@ -156,11 +159,14 @@ const CharacterDetail: React.FC = () => {
               <h3>📺 Episodios</h3>
               <div className="episodes-info">
                 <div className="episode-count">
-                  <span className="count-number">{character.episode.length}</span>
+                  <span className="count-number">
+                    {character.episode.length}
+                  </span>
                   <span className="count-label">episodios</span>
                 </div>
                 <p className="episodes-description">
-                  Este personaje aparece en {character.episode.length} episodio{character.episode.length !== 1 ? 's' : ''} de la serie.
+                  Este personaje aparece en {character.episode.length} episodio
+                  {character.episode.length !== 1 ? 's' : ''} de la serie.
                 </p>
               </div>
             </div>
@@ -168,24 +174,27 @@ const CharacterDetail: React.FC = () => {
             <div className="detail-card creation-card">
               <h3>⏰ Información Adicional</h3>
               <div className="creation-info">
-                <p><strong>Creado en la API:</strong></p>
+                <p>
+                  <strong>Creado en la API:</strong>
+                </p>
                 <p className="creation-date">{formatDate(character.created)}</p>
-                <p><strong>ID del personaje:</strong> #{character.id}</p>
+                <p>
+                  <strong>ID del personaje:</strong> #{character.id}
+                </p>
               </div>
             </div>
-
           </div>
         </div>
 
         <div className="action-buttons">
-          <button 
+          <button
             className="action-btn primary"
             onClick={() => window.open(character.url, '_blank')}
           >
             Ver en API 🔗
           </button>
-          
-          <button 
+
+          <button
             className="action-btn secondary"
             onClick={() => {
               navigator.clipboard.writeText(window.location.href);
@@ -201,31 +210,30 @@ const CharacterDetail: React.FC = () => {
           <div className="stats-grid">
             <div className="stat-item">
               <span className="stat-label">Estado</span>
-              <span 
+              <span
                 className="stat-value status"
                 style={{ color: getStatusColor(character.status) }}
               >
                 {character.status}
               </span>
             </div>
-            
+
             <div className="stat-item">
               <span className="stat-label">Especie</span>
               <span className="stat-value">{character.species}</span>
             </div>
-            
+
             <div className="stat-item">
               <span className="stat-label">Género</span>
               <span className="stat-value">{character.gender}</span>
             </div>
-            
+
             <div className="stat-item">
               <span className="stat-label">Episodios</span>
               <span className="stat-value">{character.episode.length}</span>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );

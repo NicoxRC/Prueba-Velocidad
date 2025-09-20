@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // src/pages/Dashboard.tsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -10,30 +11,33 @@ const Dashboard: React.FC = () => {
     {
       id: 'characters',
       title: 'Characters',
-      description: 'Descubre todos los personajes del universo de Rick and Morty. Desde científicos locos hasta alienígenas interdimensionales.',
+      description:
+        'Descubre todos los personajes del universo de Rick and Morty. Desde científicos locos hasta alienígenas interdimensionales.',
       icon: '👨‍🔬',
       route: '/characters',
       gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      available: true
+      available: true,
     },
     {
       id: 'locations',
       title: 'Locations',
-      description: 'Explora las diferentes ubicaciones y dimensiones que aparecen en la serie. Cada lugar tiene su propia historia única.',
+      description:
+        'Explora las diferentes ubicaciones y dimensiones que aparecen en la serie. Cada lugar tiene su propia historia única.',
       icon: '🌍',
       route: '/locations',
       gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-      available: false
+      available: true,
     },
     {
       id: 'episodes',
       title: 'Episodes',
-      description: 'Revive todos los episodios de la serie. Desde aventuras científicas hasta crisis interdimensionales.',
+      description:
+        'Revive todos los episodios de la serie. Desde aventuras científicas hasta crisis interdimensionales.',
       icon: '📺',
       route: '/episodes',
       gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-      available: false
-    }
+      available: false,
+    },
   ];
 
   const handleCardClick = (card: any) => {
@@ -81,9 +85,9 @@ const Dashboard: React.FC = () => {
         <footer className="dashboard-footer">
           <p>Powered by Rick and Morty API</p>
           <div className="footer-links">
-            <a 
-              href="https://rickandmortyapi.com" 
-              target="_blank" 
+            <a
+              href="https://rickandmortyapi.com"
+              target="_blank"
               rel="noopener noreferrer"
             >
               API Documentation
